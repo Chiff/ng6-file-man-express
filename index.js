@@ -1,4 +1,6 @@
 const express = require('express');
+const cors = require('cors');
+
 const rimraf = require('rimraf');
 const path = require('path');
 const fs = require('fs');
@@ -6,10 +8,11 @@ const fs = require('fs');
 const onUpload = require('./uploader.js');
 const settings = require('./settings.js');
 
-const PATH_SEPARATOR = '\\';
+const PATH_SEPARATOR = path.sep;
 const defaultPath = settings.defaultFolder;
 
 const app = express();
+app.use(cors());
 
 app.listen(settings.serverPort, () => {
   console.log('Server running on port ' + settings.serverPort);
