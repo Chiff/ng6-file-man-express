@@ -35,8 +35,8 @@ module.exports = function (req, res) {
 };
 
 function onSimpleUpload(fields, file, res) {
-  const uuid = fields.qquuid,
-    responseData = {
+  const uuid = fields.qquuid;
+  const responseData = {
       success: false
     };
 
@@ -136,8 +136,8 @@ function moveUploadedFile(file, uuid, success, failure) {
   console.log(uuid);
   console.log(file);
 
-  const destinationDir = uploadedFilesPath + uuid + '/',
-    fileDestination = uploadedFilesPath + file.name;
+  const destinationDir = uploadedFilesPath + (uuid || '') + '/';
+  const fileDestination = uploadedFilesPath + file.name;
 
   moveFile(destinationDir, file.path, fileDestination, success, failure);
 }
